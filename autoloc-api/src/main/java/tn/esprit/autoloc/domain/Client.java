@@ -1,4 +1,5 @@
 package tn.esprit.autoloc.domain;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,6 +31,7 @@ public class Client {
     private String numPermis;
     @Column(nullable = false, unique = true)
     private LocalDate dateInscription;
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "client")
     private Set<Reservation> reservations;
 
