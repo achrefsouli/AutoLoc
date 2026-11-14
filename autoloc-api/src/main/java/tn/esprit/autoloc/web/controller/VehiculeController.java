@@ -52,4 +52,31 @@ public class VehiculeController {
         vehiculeService.deleteVehiculeById(idVehicule);
         return ResponseEntity.noContent().build();
     }
+
+    @PutMapping("/affecterAgence/{idVehicule}/{idAgence}")
+    public ResponseEntity<Vehicule> affecterVehicule(@PathVariable Long idVehicule, @PathVariable Long idAgence) {
+        Vehicule vehicule = vehiculeService.affecterVehicule(idVehicule, idAgence);
+        if (vehicule == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(vehicule);
+    }
+
+    @PutMapping("/affecterEquipement/{idVehicule}/{idEquipement}")
+    public ResponseEntity<Vehicule> affecterEquipement(@PathVariable Long idVehicule, @PathVariable Long idEquipement) {
+        Vehicule vehicule = vehiculeService.affecterEquipement(idVehicule, idEquipement);
+        if (vehicule == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(vehicule);
+    }
+
+    @PutMapping("/desaffecterEquipement/{idVehicule}/{idEquipement}")
+    public ResponseEntity<Vehicule> desaffecterEquipement(@PathVariable Long idVehicule, @PathVariable Long idEquipement) {
+        Vehicule vehicule = vehiculeService.desaffecterEquipement(idVehicule, idEquipement);
+        if (vehicule == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(vehicule);
+    }
 }

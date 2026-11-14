@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.math.BigDecimal;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -37,7 +38,6 @@ public class Vehicule {
     private Set<Reservation> reservations;
     @ManyToOne
     Agence agence;
-    @JsonIgnore
-    @ManyToMany(mappedBy = "vehicules",cascade = CascadeType.ALL)
-    private Set<Equipement> equipements;
+    @ManyToMany
+    private Set<Equipement> equipements = new HashSet<>();
 }

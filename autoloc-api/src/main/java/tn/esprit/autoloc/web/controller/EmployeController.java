@@ -52,4 +52,22 @@ public class EmployeController {
         employeService.deleteEmployeById(idEmploye);
         return ResponseEntity.noContent().build();
     }
+
+    @PutMapping("/desaffecter/{idEmploye}")
+    public ResponseEntity<Employe> desaffecterEmploye(@PathVariable Long idEmploye) {
+        Employe employe = employeService.desaffecterEmploye(idEmploye);
+        if (employe == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(employe);
+    }
+
+    @PutMapping("/affecter/{idEmploye}/{idAgence}")
+    public ResponseEntity<Employe> affecterEmploye(@PathVariable Long idEmploye, @PathVariable Long idAgence) {
+        Employe employe = employeService.affecterEmploye(idEmploye, idAgence);
+        if (employe == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(employe);
+    }
 }
